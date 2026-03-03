@@ -26,9 +26,16 @@ class BaseRepository {
             queryBuilder.andWhere(options.where);
         }
         if (options?.relations) {
-            options.relations.forEach(relation => {
-                queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-            });
+            if (Array.isArray(options.relations)) {
+                options.relations.forEach(relation => {
+                    queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+                });
+            }
+            else if (typeof options.relations === 'object') {
+                Object.keys(options.relations).forEach(relation => {
+                    queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+                });
+            }
         }
         if (options?.order) {
             Object.entries(options.order).forEach(([field, direction]) => {
@@ -49,9 +56,16 @@ class BaseRepository {
             queryBuilder.andWhere(options.where);
         }
         if (options?.relations) {
-            options.relations.forEach(relation => {
-                queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-            });
+            if (Array.isArray(options.relations)) {
+                options.relations.forEach(relation => {
+                    queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+                });
+            }
+            else if (typeof options.relations === 'object') {
+                Object.keys(options.relations).forEach(relation => {
+                    queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+                });
+            }
         }
         return queryBuilder.getOne();
     }

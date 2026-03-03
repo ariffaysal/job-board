@@ -10,6 +10,8 @@ import { JwtStrategy } from './jwt.strategy';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { Agency } from '../agency/entities/agency.entity';
 
+type StringValue = 'string';
+
 @Module({
   imports: [
     TypeOrmModule.forFeature([Agency]),
@@ -19,7 +21,7 @@ import { Agency } from '../agency/entities/agency.entity';
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: { 
-          expiresIn: configService.get<string>('JWT_EXPIRES_IN') || '7d' 
+          expiresIn: (configService.get<string>('JWT_EXPIRES_IN') || '7d') as any 
         },
       }),
       inject: [ConfigService],

@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JobsService = void 0;
 const common_1 = require("@nestjs/common");
-const job_repository_1 = require("../repositories/job.repository");
 const job_entity_1 = require("../entities/job.entity");
+const job_repository_1 = require("../repositories/job.repository");
 let JobsService = class JobsService {
     constructor(jobRepository) {
         this.jobRepository = jobRepository;
@@ -66,7 +66,7 @@ let JobsService = class JobsService {
         }
         const jobData = {
             ...createJobDto,
-            status: createJobDto.status || job_entity_1.JobStatus.DRAFT,
+            status: (createJobDto.status || job_entity_1.JobStatus.DRAFT),
             type: createJobDto.type || job_entity_1.JobType.FULL_TIME,
         };
         if (user.role === 'client') {

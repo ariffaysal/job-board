@@ -35,9 +35,15 @@ export abstract class BaseRepository<T> {
     }
     
     if (options?.relations) {
-      options.relations.forEach(relation => {
-        queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-      });
+      if (Array.isArray(options.relations)) {
+        options.relations.forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      } else if (typeof options.relations === 'object') {
+        Object.keys(options.relations).forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      }
     }
     
     if (options?.order) {
@@ -65,9 +71,15 @@ export abstract class BaseRepository<T> {
     }
     
     if (options?.relations) {
-      options.relations.forEach(relation => {
-        queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-      });
+      if (Array.isArray(options.relations)) {
+        options.relations.forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      } else if (typeof options.relations === 'object') {
+        Object.keys(options.relations).forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      }
     }
     
     return queryBuilder.getOne();
@@ -85,7 +97,7 @@ export abstract class BaseRepository<T> {
 
   // Expose base repository methods
   async create(data: Partial<T>): Promise<T> {
-    return this.repository.create(data);
+    return this.repository.create(data as any) as T;
   }
 
   async save(entity: T): Promise<T> {
