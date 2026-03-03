@@ -144,7 +144,7 @@ let AgencyService = class AgencyService {
             coverLetter: dto.coverLetter,
             resume: resume?.filename,
             job,
-            status: 'applied',
+            status: application_entity_1.ApplicationStatus.APPLIED,
         });
         const saved = await this.appRepo.save(application);
         if (job.client?.email) {

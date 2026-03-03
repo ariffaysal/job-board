@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { Agency } from './entities/agency.entity';
 import { Client } from './entities/client.entity';
 import { Job } from './entities/job.entity';
-import { Application } from './entities/application.entity';
+import { Application, ApplicationStatus } from './entities/application.entity';
 import { CreateAgencyDto } from './dto/create-agency.dto';
 import { CreateApplicationDto } from './dto/create-application.dto';
 
@@ -166,7 +166,7 @@ async getJobById(id: number) {
       coverLetter: dto.coverLetter,
       resume: resume?.filename,
       job,
-      status: 'applied',
+      status: ApplicationStatus.APPLIED,
     });
 
     const saved = await this.appRepo.save(application);

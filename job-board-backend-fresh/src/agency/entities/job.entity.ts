@@ -113,6 +113,9 @@ export class Job {
   @Column({ type: 'date', nullable: true })
   applicationDeadline?: Date;
 
+  @Column({ length: 255, nullable: true })
+  attachment?: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

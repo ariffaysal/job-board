@@ -166,6 +166,10 @@ __decorate([
     __metadata("design:type", Date)
 ], Job.prototype, "applicationDeadline", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ length: 255, nullable: true }),
+    __metadata("design:type", String)
+], Job.prototype, "attachment", void 0);
+__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], Job.prototype, "createdAt", void 0);
