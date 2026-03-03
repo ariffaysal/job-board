@@ -35,9 +35,11 @@ export abstract class BaseRepository<T> {
     }
     
     if (options?.relations) {
-      options.relations.forEach(relation => {
-        queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-      });
+      if (Array.isArray(options.relations)) {
+        options.relations.forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      }
     }
     
     if (options?.order) {
@@ -65,9 +67,11 @@ export abstract class BaseRepository<T> {
     }
     
     if (options?.relations) {
-      options.relations.forEach(relation => {
-        queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
-      });
+      if (Array.isArray(options.relations)) {
+        options.relations.forEach(relation => {
+          queryBuilder.leftJoinAndSelect(`${this.entityName}.${relation}`, relation);
+        });
+      }
     }
     
     return queryBuilder.getOne();
