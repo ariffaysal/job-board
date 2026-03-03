@@ -26,16 +26,16 @@ export declare class AgencyController {
             id: number;
             title: string;
             description: string;
-            attachment: any;
+            attachment: string;
         }[];
     }[]>;
     getJobs(clientId: number): Promise<{
         id: number;
         title: string;
         description: string;
-        attachment: any;
+        attachment: string;
     }[]>;
-    applyToJob(jobId: number, dto: CreateApplicationDto, resume?: Express.Multer.File): Promise<import("./entities/application.entity").Application[]>;
+    applyToJob(jobId: number, dto: CreateApplicationDto, resume?: Express.Multer.File): Promise<import("./entities/application.entity").Application>;
     updateAgency(id: number, dto: UpdateAgencyDto): Promise<{
         id: number;
         email: string;
@@ -53,7 +53,7 @@ export declare class AgencyController {
         description: string;
         location: string;
         salary: number;
-        attachment: any;
+        attachment: string;
         createdAt: Date;
     }>;
     updateApplication(id: number, dto: UpdateApplicationDto): Promise<import("./entities/application.entity").Application>;

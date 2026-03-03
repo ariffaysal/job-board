@@ -46,6 +46,7 @@ export declare class Job {
     metaKeywords?: string;
     isFeatured: boolean;
     applicationDeadline?: Date;
+    attachment?: string;
     createdAt: Date;
     updatedAt: Date;
     deletedAt?: Date;

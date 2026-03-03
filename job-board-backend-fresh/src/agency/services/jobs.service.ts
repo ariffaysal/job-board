@@ -1,10 +1,9 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { Job } from '../entities/job.entity';
+import { Job, JobStatus, JobType, JobExperienceLevel } from '../entities/job.entity';
 import { JobRepository } from '../repositories/job.repository';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { CreateJobDto } from '../dto/create-job.dto';
 import { UpdateJobDto } from '../dto/update-job.dto';
-import { JobStatus, JobType, JobExperienceLevel } from '../entities/job.entity';
 
 @Injectable()
 export class JobsService {
@@ -96,7 +95,7 @@ export class JobsService {
     // Set default values
     const jobData: Partial<Job> = {
       ...createJobDto,
-      status: createJobDto.status || JobStatus.DRAFT,
+      status: (createJobDto.status || JobStatus.DRAFT) as JobStatus,
       type: createJobDto.type || JobType.FULL_TIME,
     };
 

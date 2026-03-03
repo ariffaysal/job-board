@@ -1,9 +1,8 @@
-import { Job } from '../entities/job.entity';
+import { Job, JobStatus, JobType, JobExperienceLevel } from '../entities/job.entity';
 import { JobRepository } from '../repositories/job.repository';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { CreateJobDto } from '../dto/create-job.dto';
 import { UpdateJobDto } from '../dto/update-job.dto';
-import { JobStatus, JobType, JobExperienceLevel } from '../entities/job.entity';
 export declare class JobsService {
     private readonly jobRepository;
     constructor(jobRepository: JobRepository);

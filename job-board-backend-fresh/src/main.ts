@@ -9,14 +9,14 @@ async function bootstrap() {
   // Request logging for debugging on Render
   app.use(morgan('dev')); 
 
-  // Enable CORS with support for both local and production environments
-// Enable CORS with support for both local and production environments
+  // Updated CORS to include your specific Vercel deployment URL
   app.enableCors({
     origin: [
       'http://localhost:3000', 
       'http://localhost:3001',
-      'https://master-job-saas.vercel.app', // Keep this just in case
-      'https://job-board-saas-master.vercel.app', // THIS IS YOUR REAL URL
+      'https://master-job-saas.vercel.app',
+      'https://job-board-saas-master.vercel.app',
+      'https://job-board-git-main-ariffaysals-projects.vercel.app', // Added from your error log
     ],
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
@@ -30,10 +30,8 @@ async function bootstrap() {
     transform: true,
   }));
 
-  // Render provides the PORT dynamically
   const PORT = process.env.PORT || 10000;
   
-  // '0.0.0.0' allows external access on Render
   await app.listen(PORT, '0.0.0.0');
   
   console.log(`🚀 Backend running on port ${PORT}`);

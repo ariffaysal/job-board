@@ -38,7 +38,7 @@ export declare class AgencyService {
             id: number;
             title: string;
             description: string;
-            attachment: any;
+            attachment: string;
         }[];
     }[]>;
     addJob(clientId: number, dto: any, file?: Express.Multer.File): Promise<Job[]>;
@@ -48,17 +48,17 @@ export declare class AgencyService {
         description: string;
         location: string;
         salary: number;
-        attachment: any;
+        attachment: string;
         createdAt: Date;
     }>;
     getJobsByClient(clientId: number): Promise<{
         id: number;
         title: string;
         description: string;
-        attachment: any;
+        attachment: string;
     }[]>;
     deleteJob(jobId: number): Promise<Job>;
-    applyToJob(jobId: number, dto: CreateApplicationDto, resume?: Express.Multer.File): Promise<Application[]>;
+    applyToJob(jobId: number, dto: CreateApplicationDto, resume?: Express.Multer.File): Promise<Application>;
     getApplicationsByJob(jobId: number): Promise<Application[]>;
     updateApplication(id: number, dto: Partial<any>): Promise<Application>;
     deleteApplication(id: number): Promise<Application>;

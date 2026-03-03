@@ -11,7 +11,12 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use((0, morgan_1.default)('dev'));
     app.enableCors({
-        origin: ['http://localhost:3000', 'https://master-job-saas.vercel.app'],
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'https://master-job-saas.vercel.app',
+            'https://job-board-saas-master.vercel.app',
+        ],
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
         allowedHeaders: 'Content-Type,Authorization',

@@ -10,6 +10,8 @@ import { JwtStrategy } from './jwt.strategy';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { Agency } from '../agency/entities/agency.entity';
 
+type StringValue = 'string';
+
 @Module({
   imports: [
     TypeOrmModule.forFeature([Agency]),
